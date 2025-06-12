@@ -7,7 +7,7 @@ public class Name : MonoBehaviour
     public static string playerName;
     public TMP_InputField nameInput;
     public Button saveButton;
-    private string[] randomNames = { "Player1", "Gamer", "Winner", "Champion", "Star", "Lucky", "Master", "Pro", "Legend", "Hero" };
+    private string[] randomNames = { "Alex", "Juan", "Gamer", "Winner", "Champion", "Star", "Lucky", "Master", "Pro", "Legend", "Hero" };
 
     void Start()
     {

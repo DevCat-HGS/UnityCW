@@ -2121,7 +2121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusText: {fileID: 1371285512}
-  nameManagerPrefab: {fileID: 52713809}
 --- !u!4 &1591032517
 Transform:
   m_ObjectHideFlags: 0

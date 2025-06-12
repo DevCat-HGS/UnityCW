@@ -52,11 +52,14 @@ public class Launcher4 : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         statusText.text = "Unido a la sala!";
+        Debug.Log($"[Launcher] Jugador unido a la sala: {PhotonNetwork.CurrentRoom.Name}");
+        Debug.Log($"[NamePlayer] Total de jugadores (PlayerList): {PhotonNetwork.PlayerList.Length}");
+
         // PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
-        ComponentPlayer();
+        NombreJugadores();
     }
 
-    public void ComponentPlayer()
+    public void NombreJugadores()
     {
         if (NamePlayer.Instance != null)
         {
@@ -68,4 +71,10 @@ public class Launcher4 : MonoBehaviourPunCallbacks
             Debug.LogError("[Launcher4] No se encontró la instancia de NamePlayer");
         }
     }
+
+    public void ComponentesPlayer()
+    {
+        Debug.Log("Componentes <Dados, Mesa, Skin del Jugador>");
+    }
 }
+
