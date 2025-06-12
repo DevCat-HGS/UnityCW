@@ -62,11 +62,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d258232603b0abf4790aacc445bb12d5, type: 3}
       propertyPath: m_Name
-      value: Mesa 1 (1)
+      value: Mesa 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: d258232603b0abf4790aacc445bb12d5, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d258232603b0abf4790aacc445bb12d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5497121937908779316}
   m_SourcePrefab: {fileID: 100100000, guid: d258232603b0abf4790aacc445bb12d5, type: 3}
+--- !u!1 &8652647534582432729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d258232603b0abf4790aacc445bb12d5, type: 3}
+  m_PrefabInstance: {fileID: 8418644729993838216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5497121937908779316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652647534582432729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

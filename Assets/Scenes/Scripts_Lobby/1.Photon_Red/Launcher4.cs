@@ -6,9 +6,9 @@ using TMPro;
 
 public class Launcher4 : MonoBehaviourPunCallbacks
 {
-    [Header("Photon")]
-    public PhotonView playerPrefab;
-    public Transform spawnPoint;
+    // [Header("Photon")]
+    // public PhotonView playerPrefab;
+    // public Transform spawnPoint;
 
     [Header("UI")]
     public TextMeshProUGUI statusText;
@@ -52,6 +52,20 @@ public class Launcher4 : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         statusText.text = "Unido a la sala!";
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+        // PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+        ComponentPlayer();
+    }
+
+    public void ComponentPlayer()
+    {
+        if (NamePlayer.Instance != null)
+        {
+            Debug.Log($"[Launcher4] Jugador unido a la sala. Número de jugador: {PhotonNetwork.CurrentRoom.PlayerCount}");
+            NamePlayer.Instance.AssignPlayerName();
+        }
+        else
+        {
+            Debug.LogError("[Launcher4] No se encontró la instancia de NamePlayer");
+        }
     }
 }
