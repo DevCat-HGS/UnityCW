@@ -41,7 +41,7 @@ public class Launcher4 : MonoBehaviourPunCallbacks
 
     private void CreateRoom()
     {
-        string roomName = "Sala_4Players";
+        string roomName = "Sala_444";
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 4;
         PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, TypedLobby.Default);

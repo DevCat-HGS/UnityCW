@@ -14,6 +14,7 @@ public class NamePlayer : MonoBehaviourPunCallbacks
         if (Instance == null)
         {
             Instance = this;
+             DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -41,6 +42,18 @@ public class NamePlayer : MonoBehaviourPunCallbacks
         }
 
         Debug.Log($"[NamePlayer] Número de textos configurados: {playerNameTexts.Length}");
+        
+        // Asignar nombre automáticamente al iniciar
+        if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
+        {
+            AssignPlayerName();
+        }
+
+        // Solicitar nombres actuales a todos los jugadores
+        if (photonView.IsMine)
+        {
+            photonView.RPC("RequestPlayerNames", RpcTarget.All);
+        }
     }
 
     public void AssignPlayerName()
@@ -64,18 +77,16 @@ public class NamePlayer : MonoBehaviourPunCallbacks
             playerName = Name.GetPlayerName();
         }
 
-        int playerNumber = PhotonNetwork.CurrentRoom.PlayerCount - 1;
+        int playerNumber = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        Debug.Log($"[NamePlayer] ActorNumber del jugador: {PhotonNetwork.LocalPlayer.ActorNumber}");
         Debug.Log($"[NamePlayer] Número de jugador calculado: {playerNumber}");
         Debug.Log($"[NamePlayer] Total de jugadores en la sala: {PhotonNetwork.CurrentRoom.PlayerCount}");
 
         if (playerNumber >= 0 && playerNumber < playerNameTexts.Length)
         {
-            if (photonView.IsMine)
-            {
-                Debug.Log($"[NamePlayer] Asignando nombre {playerName} al jugador {playerNumber}");
-                photonView.RPC("SyncPlayerName", RpcTarget.All, playerName, playerNumber);
-                Debug.Log("[NamePlayer] RPC SyncPlayerName enviado");
-            }
+            Debug.Log($"[NamePlayer] Asignando nombre {playerName} al jugador {playerNumber}");
+            photonView.RPC("SyncPlayerName", RpcTarget.All, playerName, playerNumber);
+            Debug.Log("[NamePlayer] RPC SyncPlayerName enviado");
         }
         else
         {
@@ -102,6 +113,34 @@ public class NamePlayer : MonoBehaviourPunCallbacks
         else
         {
             Debug.LogError($"[NamePlayer] Índice inválido en SyncPlayerName: {playerIndex}");
+        }
+    }
+
+    [PunRPC]
+    void RequestPlayerNames()
+    {
+        Debug.Log("[NamePlayer] Recibida solicitud de nombres");
+        if (!string.IsNullOrEmpty(playerName))
+        {
+            int playerNumber = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+            if (playerNumber >= 0 && playerNumber < playerNameTexts.Length)
+            {
+                photonView.RPC("SyncPlayerName", RpcTarget.All, playerName, playerNumber);
+            }
+        }
+    }
+
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        base.OnPlayerEnteredRoom(newPlayer);
+        if (photonView.IsMine)
+        {
+            // Enviar nuestro nombre al nuevo jugador
+            int playerNumber = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+            if (playerNumber >= 0 && playerNumber < playerNameTexts.Length)
+            {
+                photonView.RPC("SyncPlayerName", RpcTarget.All, playerName, playerNumber);
+            }
         }
     }
 }
