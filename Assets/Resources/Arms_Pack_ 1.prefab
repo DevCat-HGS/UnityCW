@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9df923f66effdfb45b74968226ecedbe, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9df923f66effdfb45b74968226ecedbe, type: 3}
       propertyPath: m_Name
       value: Arms_Pack_ 1
@@ -72,6 +76,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9df923f66effdfb45b74968226ecedbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4419291258085802948}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9df923f66effdfb45b74968226ecedbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3156502449463829378}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9df923f66effdfb45b74968226ecedbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6902397596605622144}
   m_SourcePrefab: {fileID: 100100000, guid: 9df923f66effdfb45b74968226ecedbe, type: 3}
 --- !u!1 &6904222102352397053 stripped
 GameObject:
@@ -96,7 +106,54 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -3156502449463829378}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-3156502449463829378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904222102352397053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
+--- !u!114 &-6902397596605622144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6904222102352397053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc34b0b27c794794c8a3894f3d0a75f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 5

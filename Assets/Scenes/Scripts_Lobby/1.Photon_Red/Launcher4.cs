@@ -70,10 +70,13 @@ public class Launcher4 : MonoBehaviourPunCallbacks
         {
             Debug.LogError("[Launcher4] No se encontró la instancia de NamePlayer");
         }
+        ComponentesPlayer();
     }
 
     public void ComponentesPlayer()
     {
+        SpawnPlayer.Instance.Spawnear();
+        SpawnTable.Instance.Spawnear();
         Debug.Log("Componentes <Dados, Mesa, Skin del Jugador>");
     }
 }
