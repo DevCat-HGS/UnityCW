@@ -11,7 +11,6 @@ public class SpawnPlayer : MonoBehaviour
     public PhotonView PlayerPrefab1;
     public Transform SpawnPoint;
 
-
     private void Awake()
     {
         if (Instance == null)

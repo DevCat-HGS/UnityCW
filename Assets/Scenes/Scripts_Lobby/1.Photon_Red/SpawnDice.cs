@@ -1,14 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
-using TMPro;
+
 public class SpawnDice : MonoBehaviour
 {
     public static SpawnDice Instance;
-    public GameObject DicePrefab;
+
+    [Header("Photon")]
+    public PhotonView DicePrefab;
     public Transform SpawnPoint;
-    
 
     private void Awake()
     {
@@ -22,15 +22,18 @@ public class SpawnDice : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void Spawnear()
     {
         if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
         {
+            // Instantiate the dice prefab at the spawn point
             PhotonNetwork.Instantiate(DicePrefab.name, SpawnPoint.position, SpawnPoint.rotation);
+            Debug.Log("Dice spawned successfully!");
         }
         else
         {
-            Debug.LogError("[SpawnDice] No se ha conectado a Photon o no está en una sala.");
+            Debug.LogError("Not connected to Photon or not in a room.");
         }
     }
 }

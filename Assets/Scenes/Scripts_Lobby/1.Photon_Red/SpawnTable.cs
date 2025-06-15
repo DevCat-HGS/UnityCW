@@ -1,16 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
-using TMPro;
+
 public class SpawnTable : MonoBehaviour
 {
     public static SpawnTable Instance;
 
     [Header("Photon")]
-    public PhotonView DicePrefab;
+    public PhotonView TablePrefab;
     public Transform SpawnPoint;
-
 
     private void Awake()
     {
@@ -24,12 +22,13 @@ public class SpawnTable : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void Spawnear()
     {
         if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
         {
-            // Instantiate the player prefab at the spawn point
-            PhotonNetwork.Instantiate(DicePrefab.name, SpawnPoint.position, SpawnPoint.rotation);
+            // Instanciar el prefab de la mesa
+            PhotonNetwork.Instantiate(TablePrefab.name, SpawnPoint.position, SpawnPoint.rotation);
             Debug.Log("Table spawned successfully!");
         }
         else

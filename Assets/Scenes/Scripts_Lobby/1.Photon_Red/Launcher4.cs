@@ -75,9 +75,43 @@ public class Launcher4 : MonoBehaviourPunCallbacks
 
     public void ComponentesPlayer()
     {
-        SpawnPlayer.Instance.Spawnear();
-        SpawnTable.Instance.Spawnear();
-        Debug.Log("Componentes <Dados, Mesa, Skin del Jugador>");
+        Debug.Log("🔧 Iniciando instanciación de componentes del jugador...");
+
+        // Instanciar mesa
+        if (SpawnTable.Instance != null)
+        {
+            SpawnTable.Instance.Spawnear();
+            Debug.Log("✅ Mesa instanciada.");
+        }
+        else
+        {
+            Debug.LogError("❌ SpawnTable.Instance es null.");
+        }
+
+        // Instanciar dados
+        if (SpawnDice.Instance != null)
+        {
+            SpawnDice.Instance.Spawnear();
+            Debug.Log("✅ Dados instanciados.");
+        }
+        else
+        {
+            Debug.LogError("❌ SpawnDice.Instance es null.");
+        }
+
+        // Instanciar jugador
+        if (SpawnPlayer.Instance != null)
+        {
+            SpawnPlayer.Instance.Spawnear();
+            Debug.Log("✅ Jugador instanciado.");
+        }
+        else
+        {
+            Debug.LogError("❌ SpawnPlayer.Instance es null.");
+        }
+
+        Debug.Log("🎮 Todos los componentes han sido llamados correctamente.");
     }
+
 }
 
